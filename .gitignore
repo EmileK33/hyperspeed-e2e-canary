@@ -1,6 +1,7 @@
 node_modules/
 package-lock.json
 dist/
+coverage/
 .bp-worktrees/
 build-plan/run-state.json
 build-plan/wave-*-failure-report.json

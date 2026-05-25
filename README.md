@@ -1,26 +1,32 @@
-# Canary project — `hyperspeed-canary-todos`
+# hyperspeed-canary-todos
 
-Tiny TypeScript todo-list API. Exists **only** as the target project that
-`tests/e2e/run-canary.mjs` exercises the Track B Node runner against
-(issue #40 / Track D).
+Tiny TypeScript todo-list API. Used as a fixture target for the HyperSpeed Track D end-to-end runner validation.
 
-This is not a published package. It is a fixture. Treat it like one:
-
-- `package.json`, `tsconfig.json`, `npm test`, `npm run test:integration`
-  are real and must work — that is the whole point.
-- `src/` is intentionally near-empty. The canned source specs in
-  `../specs/` describe what sessions should build; the canary's starting
-  state is "fresh npm init + vitest + one passing smoke test".
-- Session output never lands here. The harness copies this dir into a
-  scratch checkout of the throwaway test repo on every run.
-
-To use directly (sanity check the scripts work):
+## Setup
 
 ```bash
-cd tests/e2e/canary-project
 npm install
-npm test               # vitest run
+```
+
+## Running tests
+
+Run unit tests (excludes integration):
+
+```bash
+npm test
+```
+
+Run integration tests:
+
+```bash
 npm run test:integration
 ```
 
-See [tests/e2e/README.md](../README.md) for the full harness flow.
+The integration command exits 0 when all integration tests pass and non-zero on failure. It is the gate for each integration wave.
+
+## Project structure
+
+- `src/store/types.ts` — shared type contracts (`List`, `Todo`, `Store`, `RouteMount`, etc.)
+- `src/index.ts` — entry point stub
+- `tests/integration/` — integration test suite
+- `tests/integration/helpers.ts` — test server utilities for integration tests
