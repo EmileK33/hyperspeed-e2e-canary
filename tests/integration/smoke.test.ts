@@ -1,5 +1,2 @@
-import { describe, it, expect } from 'vitest';
-
-describe('canary integration smoke', () => {
-  it('runs', () => { expect(1 + 1).toBe(2); });
-});
+import { it, expect } from 'vitest';
+it('S0-A stub passes', () => { expect(1 + 1).toBe(2); });
