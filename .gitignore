@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.bp-worktrees/
+build-plan/run-state.json
+build-plan/wave-*-failure-report.json
