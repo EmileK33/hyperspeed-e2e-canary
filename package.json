@@ -1,23 +1,15 @@
 {
-  "name": "app",
+  "name": "hyperspeed-canary-todos",
+  "version": "0.0.1",
   "private": true,
-  "version": "0.0.0",
-  "engines": {
-    "node": ">=20"
-  },
+  "type": "module",
+  "description": "Canary project for HyperSpeed Track D end-to-end runner validation. Tiny TypeScript todo-list API used as a fixture target for run-canary.mjs.",
   "scripts": {
-    "build": "tsc",
-    "start": "tsx src/index.ts",
+    "test": "vitest run",
     "test:integration": "vitest run tests/integration"
   },
-  "dependencies": {
-    "pg": "^8.12"
-  },
   "devDependencies": {
-    "@types/node": "^20.0",
-    "@types/pg": "^8.11",
-    "tsx": "^4.0",
-    "typescript": "^5.5",
-    "vitest": "^2.0"
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
   }
 }
