@@ -1,26 +1,31 @@
-# Canary project — `hyperspeed-canary-todos`
+# app
 
-Tiny TypeScript todo-list API. Exists **only** as the target project that
-`tests/e2e/run-canary.mjs` exercises the Track B Node runner against
-(issue #40 / Track D).
+TypeScript todo-list API built on Node.js 20 with `node:http` and `pg`.
 
-This is not a published package. It is a fixture. Treat it like one:
+## Running integration tests
 
-- `package.json`, `tsconfig.json`, `npm test`, `npm run test:integration`
-  are real and must work — that is the whole point.
-- `src/` is intentionally near-empty. The canned source specs in
-  `../specs/` describe what sessions should build; the canary's starting
-  state is "fresh npm init + vitest + one passing smoke test".
-- Session output never lands here. The harness copies this dir into a
-  scratch checkout of the throwaway test repo on every run.
-
-To use directly (sanity check the scripts work):
+Requires a running Postgres instance. Set `DATABASE_URL` or accept the default:
 
 ```bash
-cd tests/e2e/canary-project
-npm install
-npm test               # vitest run
 npm run test:integration
 ```
 
-See [tests/e2e/README.md](../README.md) for the full harness flow.
+The global setup (`tests/integration/setup.ts`) defaults `DATABASE_URL` to
+`postgres://postgres:postgres@localhost:5432/todos_test` and provisions the
+`todos` and `lists` schema before any tests run. Schema provisioning is
+idempotent and safe for concurrent workers (uses `pg_advisory_xact_lock` +
+`CREATE TABLE IF NOT EXISTS`).
+
+## Environment variables
+
+| Variable | Default | Description |
+|---|---|---|
+| `DATABASE_URL` | `postgres://postgres:postgres@localhost:5432/todos_test` | Postgres connection string |
+
+## Scripts
+
+| Script | Description |
+|---|---|
+| `npm run build` | Type-check the project (`tsc`) |
+| `npm test` | Run all tests |
+| `npm run test:integration` | Run integration tests only |
