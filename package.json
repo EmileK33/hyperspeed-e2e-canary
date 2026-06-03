@@ -1,0 +1,23 @@
+{
+  "name": "app",
+  "private": true,
+  "version": "0.0.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "tsx src/index.ts",
+    "test:integration": "vitest run tests/integration"
+  },
+  "dependencies": {
+    "pg": "^8.12"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0",
+    "@types/pg": "^8.11",
+    "tsx": "^4.0",
+    "typescript": "^5.5",
+    "vitest": "^2.0"
+  }
+}
