@@ -9,7 +9,15 @@
     "test:integration": "vitest run tests/integration"
   },
   "devDependencies": {
+    "@types/node": "^26.0.1",
     "typescript": "^5.4.0",
     "vitest": "^1.6.0"
+  },
+  "vitest": {
+    "test": {
+      "setupFiles": [
+        "tests/integration/setup.ts"
+      ]
+    }
   }
 }
