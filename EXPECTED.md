@@ -54,6 +54,26 @@ should carry a `[MANUAL]` AC for the canary brand color. The harness
 asserts that *some* PR body contains a checkbox referencing
 `#3a86ff` or wording matching the canary brand color AC.
 
+## Server wiring + boot-and-hit gate (#320)
+
+The canary is a framework-free `node:http` backend, so the generator seeds the
+canonical server wiring onto the base branch (like the #319 toolchain config):
+`src/http.ts` (the `Route` contract + helpers), `src/routes/index.ts` (a
+directory-scan registry), `src/app.ts` (`createServer()` that auto-discovers +
+dispatches), and `src/server.ts` (the listen entry). Feature route sessions own
+only `src/routes/<name>.ts` modules that **default-export `Route[]`**; the seeded
+registry mounts them. No session authors the server — that is what kept the
+assembled app serving only `/health` before #320.
+
+The manifest carries a deterministic `bootGate` (boot cmd + the spec endpoints to
+hit). On the **terminal** integration wave — after every feature route has merged —
+the runner boots the real assembled server (`npx tsx src/server.ts`) and hits each
+endpoint over HTTP: `GET /health` + `GET /status` must return 200; `POST /todos`,
+`GET /todos`, `POST /todos/:id/toggle`, `POST /lists`, `GET /lists` must be MOUNTED
+(any status except the server's own 404 "Route not found"). An orphaned/unmounted
+route fails this gate. The seeded `package.json` declares `tsx` + `@types/node` so
+the server boots + type-checks.
+
 ## Integration-wave behavior
 
 The integration command runs against the *host* working tree
