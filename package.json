@@ -1,0 +1,21 @@
+{
+  "name": "app",
+  "private": true,
+  "version": "0.0.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:integration": "vitest run tests/integration",
+    "start": "tsx src/server.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.4.0",
+    "vitest": "^2.0.0"
+  }
+}
