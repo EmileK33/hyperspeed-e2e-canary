@@ -1,5 +1,33 @@
+# Dependencies
 node_modules/
+
+# Build output
 dist/
+
+# HyperSpeed build-plan artefacts
 .bp-worktrees/
 build-plan/run-state.json
 build-plan/wave-*-failure-report.json
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test artefacts
+coverage/
+.nyc_output/
