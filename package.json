@@ -5,19 +5,10 @@
   "type": "module",
   "description": "Canary project for HyperSpeed Track D end-to-end runner validation. Tiny TypeScript todo-list API used as a fixture target for run-canary.mjs.",
   "scripts": {
-    "build": "tsc --noEmit",
     "test": "vitest run",
-    "test:integration": "vitest run tests/integration",
-    "start": "tsx src/server.ts",
-    "dev": "tsx src/server.ts"
-  },
-  "dependencies": {
-    "pg": "^8.11.0"
+    "test:integration": "vitest run tests/integration"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@types/pg": "^8.11.0",
-    "tsx": "^4.7.0",
     "typescript": "^5.4.0",
     "vitest": "^1.6.0"
   }

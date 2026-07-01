@@ -3,17 +3,3 @@ dist/
 .bp-worktrees/
 build-plan/run-state.json
 build-plan/wave-*-failure-report.json
-
-# Environment files
-.env
-.env.local
-.env.*.local
-
-# Docker overrides (local customisation only)
-docker-compose.override.yml
-
-# TypeScript build artefacts
-*.tsbuildinfo
-
-# Test output
-coverage/
