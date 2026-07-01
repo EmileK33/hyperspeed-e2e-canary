@@ -1,5 +1,30 @@
+# Dependencies
 node_modules/
+
+# Build output
 dist/
+build/
+
+# HyperSpeed runner internal state
 .bp-worktrees/
 build-plan/run-state.json
 build-plan/wave-*-failure-report.json
+
+# Environment secrets
+.env
+.env.local
+.env.*.local
+
+# TypeScript incremental compilation
+*.tsbuildinfo
+
+# Coverage
+coverage/
+
+# Logs
+*.log
+session.log
+
+# OS artefacts
+.DS_Store
+Thumbs.db
