@@ -1,0 +1,28 @@
+# Local development + integration-test Postgres.
+# Matches the DATABASE_URL convention used by the integration harness.
+#
+# Usage:
+#   docker compose up -d postgres
+#   DATABASE_URL=postgres://todos:todos@localhost:5432/todos npm run test:integration
+
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: todos
+      POSTGRES_PASSWORD: todos
+      POSTGRES_DB: todos
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U todos -d todos']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  postgres_data:
