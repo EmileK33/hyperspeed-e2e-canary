@@ -1,5 +1,25 @@
+# Dependencies
 node_modules/
+
+# Build output
 dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.DS_Store
+*.sw[po]
+.vscode/
+.idea/
+
+# HyperSpeed build-plan runner state
 .bp-worktrees/
 build-plan/run-state.json
 build-plan/wave-*-failure-report.json
+
+# Logs
+*.log
+session.log

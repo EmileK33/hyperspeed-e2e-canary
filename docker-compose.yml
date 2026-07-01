@@ -1,0 +1,28 @@
+# Local development stack for the Canary Todos API.
+# Provides a Postgres instance that mirrors the CI fixture database.
+#
+# Usage:
+#   docker compose up -d
+#   DATABASE_URL=postgres://todos:todos@localhost:5432/todos npm run test:integration
+#   docker compose down -v
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: todos
+      POSTGRES_PASSWORD: todos
+      POSTGRES_DB: todos
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U todos -d todos"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  postgres_data:
