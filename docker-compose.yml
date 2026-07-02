@@ -1,0 +1,15 @@
+# docker-compose.yml
+#
+# Integration environment for the canary todo-list API.
+#
+# This project is a framework-free Node.js HTTP backend with in-memory
+# storage — no external database or cache is required. This file is kept
+# minimal so the integration harness can run entirely in-process (via
+# `npm run test:integration`) without standing up any containers.
+#
+# If a future phase adds a persistence layer (e.g. PostgreSQL), add the
+# relevant service here and update tests/integration/setup.ts accordingly.
+
+version: '3.9'
+
+services: {}
