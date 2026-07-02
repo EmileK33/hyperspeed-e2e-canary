@@ -3,3 +3,24 @@ dist/
 .bp-worktrees/
 build-plan/run-state.json
 build-plan/wave-*-failure-report.json
+
+# Local environment
+.env
+.env.local
+
+# Editor / OS
+.DS_Store
+*.swp
+*.swo
+Thumbs.db
+
+# Test artifacts
+coverage/
+*.lcov
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Logs
+*.log
+session.log
