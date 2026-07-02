@@ -1,31 +1,5 @@
-# Dependencies
 node_modules/
-
-# Build output
 dist/
-
-# HyperSpeed runner state
 .bp-worktrees/
 build-plan/run-state.json
 build-plan/wave-*-failure-report.json
-
-# Environment / secrets
-.env
-.env.local
-.env.*.local
-
-# TypeScript cache
-*.tsbuildinfo
-
-# Test coverage
-coverage/
-
-# Logs
-*.log
-npm-debug.log*
-
-# OS / editor
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
