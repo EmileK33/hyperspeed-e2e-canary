@@ -3,3 +3,23 @@ dist/
 .bp-worktrees/
 build-plan/run-state.json
 build-plan/wave-*-failure-report.json
+
+# Vitest / coverage
+coverage/
+.vitest-cache/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Logs
+*.log
+logs/
+
+# OS artefacts
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
