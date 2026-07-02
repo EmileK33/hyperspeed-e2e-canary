@@ -1,0 +1,29 @@
+# docker-compose.yml
+#
+# Local development stack for hyperspeed-canary-todos.
+# Start with: docker compose up -d
+# Then export: export DATABASE_URL=postgres://postgres:postgres@localhost:5432/todos
+#
+# CI provisions Postgres as a native service and exports DATABASE_URL directly;
+# this file is for local developer convenience only.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: todos
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d todos"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
