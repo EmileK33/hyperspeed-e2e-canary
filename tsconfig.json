@@ -7,9 +7,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "noEmit": true,
-    "allowImportingTsExtensions": true,
-    "lib": ["ES2022"],
-    "types": ["node"]
+    "allowImportingTsExtensions": true
   },
   "include": ["src", "tests"]
 }
